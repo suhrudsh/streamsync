@@ -29,7 +29,7 @@ export default function App() {
         ref={scrollTriggerAreaRef}
         className="flex h-[200svh] w-full flex-col"
       >
-        <h1 className="sticky top-0 flex flex-col text-center text-9xl font-black uppercase">
+        <h1 className="sticky top-30 flex flex-col text-center text-9xl font-black uppercase">
           <span>All your services, </span>
           <span>in one place</span>
         </h1>

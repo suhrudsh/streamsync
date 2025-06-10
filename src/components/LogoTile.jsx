@@ -120,17 +120,18 @@ export function LogoTile({ logo, position, rotation, animationDirection }) {
       y: position[1],
       z: position[2],
       duration: 0.2,
-      delay: 0.5,
+      delay: 1,
       ease: "power2.out",
     });
 
     gsap.to(tileRef.current.rotation, {
       y: rotation[1],
       duration: 0.2,
-      delay: 0.5,
+      delay: 1,
       ease: "power2.out",
     });
   }
+
   // 4) render both sub-meshes
   return (
     <group
