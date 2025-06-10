@@ -16,12 +16,12 @@ function Lights() {
   useHelper(
     keyLightRef,
     SpotLightHelper,
-    import.meta.env.NODE_ENV === "development" ? 2 : undefined,
+    import.meta.env.MODE === "development" ? 2 : undefined,
   );
   useHelper(
     fillLightRef,
     SpotLightHelper,
-    import.meta.env.NODE_ENV === "development" ? 2 : undefined,
+    import.meta.env.MODE === "development" ? 2 : undefined,
   );
 
   return (
@@ -60,7 +60,7 @@ function CameraScrollHandler({ scrollTriggerAreaRef, cameraEndPosition }) {
         start: "top top",
         end: "bottom top",
         scrub: 1,
-        markers: import.meta.env.NODE_ENV === "development",
+        markers: import.meta.env.MODE === "development",
       },
     });
   }, [camera, cameraEndPosition]); // Dependencies: re-run if camera or end position changes
