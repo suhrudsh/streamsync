@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CameraScrollHandler } from "./CameraScrollHandler";
 import { CTA } from "./CTA";
 import { Lights } from "./Lights";
@@ -24,6 +24,17 @@ export default function Hero() {
   const lastTileY = (numberOfTiles - 1) * -1.25;
   const cameraTargetY = lastTileY + 5; // Adjust offset as needed
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <section className="flex flex-col gap-8">
       <div
@@ -37,7 +48,7 @@ export default function Hero() {
           </h1>
         </div>
         <div className="sticky top-0 z-0 h-svh">
-          <Canvas camera={{ position: [-8, 10, -15], fov: 50 }}>
+          <Canvas camera={{ position: [-8, 10, -15], fov: isMobile ? 64 : 50 }}>
             {import.meta.env.DEV && <axesHelper args={[5]} />}
             <Lights />
             <ambientLight intensity={1} />
