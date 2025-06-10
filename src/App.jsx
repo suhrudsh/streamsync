@@ -13,16 +13,8 @@ function Lights() {
   const keyLightRef = useRef();
   const fillLightRef = useRef();
 
-  useHelper(
-    keyLightRef,
-    SpotLightHelper,
-    import.meta.env.MODE === "development" ? 2 : undefined,
-  );
-  useHelper(
-    fillLightRef,
-    SpotLightHelper,
-    import.meta.env.MODE === "development" ? 2 : undefined,
-  );
+  useHelper(keyLightRef, SpotLightHelper, import.meta.env.DEV ? 2 : undefined);
+  useHelper(fillLightRef, SpotLightHelper, import.meta.env.DEV ? 2 : undefined);
 
   return (
     <>
@@ -60,7 +52,7 @@ function CameraScrollHandler({ scrollTriggerAreaRef, cameraEndPosition }) {
         start: "top top",
         end: "bottom top",
         scrub: 1,
-        markers: import.meta.env.MODE === "development",
+        markers: import.meta.env.DEV,
       },
     });
   }, [camera, cameraEndPosition]); // Dependencies: re-run if camera or end position changes
@@ -117,9 +109,7 @@ export default function App() {
 
         <div className="sticky top-0 h-svh w-screen">
           <Canvas camera={{ position: [-8, 10, -15], fov: 50 }}>
-            {import.meta.env.NODE_ENV === "development" && (
-              <axesHelper args={[5]} />
-            )}
+            {import.meta.env.DEV && <axesHelper args={[5]} />}
             <Lights />
             <ambientLight intensity={1} />
 
@@ -140,7 +130,7 @@ export default function App() {
               ))}
             </group>
 
-            {import.meta.env.NODE_ENV === "development" && <OrbitControls />}
+            {import.meta.env.DEV && <OrbitControls />}
           </Canvas>
         </div>
       </div>
