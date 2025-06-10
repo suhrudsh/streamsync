@@ -25,7 +25,7 @@ export default function App() {
 
   return (
     <>
-      <div
+      <section
         ref={scrollTriggerAreaRef}
         className="flex h-[200svh] w-full flex-col"
       >
@@ -51,8 +51,8 @@ export default function App() {
             />
           </Canvas>
         </div>
-      </div>
-      <div className="h-svh"></div>
+      </section>
+      <section className="h-svh"></section>
     </>
   );
 }
