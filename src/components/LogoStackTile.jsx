@@ -1,8 +1,14 @@
 import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { useState, useEffect, useMemo, useRef } from "react";
+import gsap from "gsap";
 
-export default function LogoTile({ logo, position, rotation }) {
+export default function LogoStackTile({
+  logo,
+  position,
+  rotation,
+  animationDirection,
+}) {
   const tileRef = useRef();
 
   const { nodes } = useGLTF(import.meta.env.BASE_URL + "logo-tile.glb");
@@ -80,9 +86,67 @@ export default function LogoTile({ logo, position, rotation }) {
     return [lm, bm];
   }, [texture, avgColor]);
 
+  const directionMap = {
+    0: new THREE.Vector3(-10, 0, 0), // left
+    1: new THREE.Vector3(0, 0, -10), // back
+    2: new THREE.Vector3(10, 0, 0), // right
+    3: new THREE.Vector3(0, 0, 10), // front
+  };
+
+  const targetOffset = directionMap[animationDirection] || new THREE.Vector3();
+
+  function handleHover(e) {
+    e.stopPropagation();
+    if (!tileRef.current) return;
+
+    const newPos = tileRef.current.position.clone().add(targetOffset);
+
+    gsap.to(tileRef.current.position, {
+      x: newPos.x,
+      y: newPos.y,
+      z: newPos.z,
+      duration: 0.2,
+      ease: "power2.out",
+    });
+
+    gsap.to(tileRef.current.rotation, {
+      y: Math.PI * 1,
+      duration: 0.2,
+      ease: "power2.out",
+    });
+  }
+
+  function handleUnhover(e) {
+    e.stopPropagation();
+    if (!tileRef.current) return;
+
+    gsap.to(tileRef.current.position, {
+      x: position[0],
+      y: position[1],
+      z: position[2],
+      duration: 0.2,
+      delay: 1,
+      ease: "power2.out",
+    });
+
+    gsap.to(tileRef.current.rotation, {
+      y: rotation[1],
+      duration: 0.2,
+      delay: 1,
+      ease: "power2.out",
+    });
+  }
+
   // 4) render both sub-meshes
   return (
-    <group ref={tileRef} position={position} scale={4} rotation={rotation}>
+    <group
+      ref={tileRef}
+      position={position}
+      scale={4}
+      rotation={rotation}
+      onPointerOver={handleHover}
+      onPointerOut={handleUnhover}
+    >
       <mesh geometry={nodes.tile_1.geometry} material={logoMat} />
       <mesh geometry={nodes.tile_2.geometry} material={baseMat} />
     </group>

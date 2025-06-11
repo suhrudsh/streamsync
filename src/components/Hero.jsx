@@ -1,39 +1,16 @@
 import { Canvas } from "@react-three/fiber";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { CameraScrollHandler } from "./CameraScrollHandler";
 import { CTA } from "./CTA";
 import { Lights } from "./Lights";
 import { TilesGroupWithAnimation } from "./TilesGroupWithAnimation";
 
-export default function Hero() {
+export default function Hero({ logoPaths, isMobile }) {
   const scrollTriggerAreaRef = useRef();
-
-  const logoPaths = [
-    "apple-tv-logo.webp",
-    "disney-plus-logo.webp",
-    "espn-logo.webp",
-    "hbo-max-logo.webp",
-    "hulu-logo.webp",
-    "jiohotstar-logo.webp",
-    "netflix-logo.webp",
-    "paramount-plus-logo.webp",
-    "prime-video-logo.webp",
-  ];
 
   const numberOfTiles = logoPaths.length;
   const lastTileY = (numberOfTiles - 1) * -1.25;
   const cameraTargetY = lastTileY + 5; // Adjust offset as needed
-
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   return (
     <section className="flex flex-col gap-8">
