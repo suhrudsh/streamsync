@@ -42,7 +42,7 @@ export default function Hero() {
         className="flex h-[200svh] w-full flex-col"
       >
         <div className="sticky top-30">
-          <h1 className="flex flex-col gap-2 text-center text-3xl font-black uppercase lg:text-7xl xl:text-9xl">
+          <h1 className="font-heading flex flex-col gap-2 text-center text-3xl font-black lg:text-7xl xl:text-9xl">
             <span>All your streaming platforms.</span>
             <span>One interface.</span>
           </h1>
