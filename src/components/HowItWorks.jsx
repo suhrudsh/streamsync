@@ -46,8 +46,8 @@ export function HowItWorks({ logos, isMobile }) {
 
         <div className="relative flex w-full justify-center">
           <div className="xl:w-1/3s relative flex flex-col gap-8 text-left lg:w-1/2">
-            <div className="flex flex-col gap-2 rounded-xl bg-zinc-800 px-8 py-12">
-              <h3 className="font-heading flex justify-between text-2xl font-semibold lg:text-4xl xl:text-5xl">
+            <div className="relative flex flex-col gap-2 rounded-3xl bg-zinc-800 px-8 py-12 before:absolute before:inset-0 before:-z-10 before:-m-0.5 before:rounded-3xl before:bg-conic-110 before:from-black before:from-30% before:via-zinc-300 before:to-black before:to-100%">
+              <h3 className="font-heading flex grow justify-between text-2xl font-semibold lg:text-4xl xl:text-5xl">
                 Connect Accounts <span>1</span>
               </h3>
               <p className="text-lg text-gray-400 lg:w-2/3 xl:text-2xl">
@@ -55,7 +55,7 @@ export function HowItWorks({ logos, isMobile }) {
                 Disney+, and more.
               </p>
             </div>
-            <div className="flex flex-col gap-2 rounded-xl bg-zinc-800 px-8 py-12">
+            <div className="relative flex flex-col gap-2 rounded-3xl bg-zinc-800 px-8 py-12 before:absolute before:inset-0 before:-z-10 before:-m-0.5 before:rounded-3xl before:bg-conic-110 before:from-black before:from-30% before:via-zinc-300 before:to-black before:to-100%">
               <h3 className="font-heading flex justify-between text-2xl font-semibold lg:text-4xl xl:text-5xl">
                 Unified Discovery <span>2</span>
               </h3>
@@ -64,7 +64,7 @@ export function HowItWorks({ logos, isMobile }) {
                 one interface.
               </p>
             </div>
-            <div className="flex flex-col gap-2 rounded-xl bg-zinc-800 px-8 py-12">
+            <div className="relative flex flex-col gap-2 rounded-3xl bg-zinc-800 px-8 py-12 before:absolute before:inset-0 before:-z-10 before:-m-0.5 before:rounded-3xl before:bg-conic-110 before:from-black before:from-30% before:via-zinc-300 before:to-black before:to-100%">
               <h3 className="font-heading flex justify-between text-2xl font-semibold lg:text-4xl xl:text-5xl">
                 Stream Instantly <span>3</span>
               </h3>
