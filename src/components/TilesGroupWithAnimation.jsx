@@ -19,7 +19,6 @@ export function TilesGroupWithAnimation({ scrollTriggerAreaRef, logoPaths }) {
         start: "top top",
         end: "bottom top",
         scrub: 1,
-        markers: import.meta.env.DEV,
       },
     });
   }, [scrollTriggerAreaRef]);
