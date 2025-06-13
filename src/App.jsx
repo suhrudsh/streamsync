@@ -1,7 +1,9 @@
 import { Header } from "./components/Header";
 import { HowItWorks } from "./components/HowItWorks";
 import Hero from "./components/Hero";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import ReactLenis from "lenis/react";
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -27,8 +29,21 @@ export default function App() {
     "prime-video-logo.webp",
   ];
 
+  const lenisRef = useRef();
+
+  useEffect(() => {
+    function update(time) {
+      lenisRef.current?.lenis?.raf(time * 1000);
+    }
+
+    gsap.ticker.add(update);
+
+    return () => gsap.ticker.remove(update);
+  }, []);
+
   return (
     <>
+      <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
       <Header />
       <Hero isMobile={isMobile} logoPaths={logoPaths} />
       <HowItWorks isMobile={isMobile} logos={logoPaths} />
