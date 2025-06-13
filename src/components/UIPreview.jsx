@@ -102,7 +102,7 @@ export function UIPreview({ isMobile }) {
           {/* Panel 0 - Homepage */}
           <div
             ref={(el) => setPanelRef(el, 0)}
-            className="absolute inset-0 flex items-center justify-center lg:px-16"
+            className="absolute inset-0 flex items-center justify-center md:px-8 lg:px-16"
           >
             <div className="grid w-full items-center gap-8 lg:grid-cols-3">
               {isMobile && (

@@ -25,9 +25,9 @@ export default function App() {
     "hbo-max-logo.webp",
     "hulu-logo.webp",
     "jiohotstar-logo.webp",
-    "netflix-logo.webp",
     "paramount-plus-logo.webp",
     "prime-video-logo.webp",
+    "netflix-logo.webp",
   ];
 
   const lenisRef = useRef();

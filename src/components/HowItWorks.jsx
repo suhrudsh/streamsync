@@ -22,12 +22,12 @@ export function HowItWorks({ logos, isMobile }) {
   }, []);
 
   const positionsPct = [
-    { x: 7500, z: -3000 },
     { x: 7500, z: 0 },
-    { x: 7500, z: 3000 },
+    { x: 7500, z: -3000 },
+    { x: -7500, z: 3000 },
     { x: -7500, z: -3000 },
     { x: -7500, z: 0 },
-    { x: -7500, z: 3000 },
+    { x: 7500, z: 3000 },
     // …and so on
   ];
 
@@ -38,7 +38,7 @@ export function HowItWorks({ logos, isMobile }) {
           <h2 className="font-heading text-center text-4xl font-extrabold lg:text-6xl xl:text-8xl">
             Watch anything. From anywhere.
           </h2>
-          <p className="max-w-[45ch] text-center text-base text-gray-300 lg:text-2xl xl:text-3xl">
+          <p className="max-w-[45ch] text-center text-base text-zinc-300 md:text-xl lg:text-2xl xl:text-3xl">
             No more juggling apps, subscriptions, or remotes. We unify your
             streaming experience into one seamless platform.
           </p>
@@ -46,29 +46,29 @@ export function HowItWorks({ logos, isMobile }) {
 
         <div className="relative flex w-full justify-center">
           <div className="xl:w-1/3s relative flex flex-col gap-8 text-left lg:w-1/2">
-            <div className="relative flex flex-col gap-2 rounded-3xl bg-zinc-800 px-8 py-12 before:absolute before:inset-0 before:-z-10 before:-m-0.5 before:rounded-3xl before:bg-conic-110 before:from-black before:from-30% before:via-zinc-300 before:to-black before:to-100%">
+            <div className="relative flex flex-col gap-2 rounded-3xl bg-zinc-800 px-8 py-12 before:absolute before:inset-0 before:-z-10 before:-m-0.5 before:rounded-3xl before:bg-conic-110 before:from-black before:from-30% before:via-purple-500 before:to-black before:to-100%">
               <h3 className="font-heading flex grow justify-between text-2xl font-semibold lg:text-4xl xl:text-5xl">
-                Connect Accounts <span>1</span>
+                Connect Accounts <span className="text-purple-300">1</span>
               </h3>
-              <p className="text-lg text-gray-400 lg:w-2/3 xl:text-2xl">
+              <p className="text-lg text-zinc-300 md:w-2/3 xl:text-2xl">
                 Securely link your existing subscriptions—Netflix, Prime,
                 Disney+, and more.
               </p>
             </div>
-            <div className="relative flex flex-col gap-2 rounded-3xl bg-zinc-800 px-8 py-12 before:absolute before:inset-0 before:-z-10 before:-m-0.5 before:rounded-3xl before:bg-conic-110 before:from-black before:from-30% before:via-zinc-300 before:to-black before:to-100%">
+            <div className="relative flex flex-col gap-2 rounded-3xl bg-zinc-800 px-8 py-12 before:absolute before:inset-0 before:-z-10 before:-m-0.5 before:rounded-3xl before:bg-conic-110 before:from-black before:from-30% before:via-purple-500 before:to-black before:to-100%">
               <h3 className="font-heading flex justify-between text-2xl font-semibold lg:text-4xl xl:text-5xl">
-                Unified Discovery <span>2</span>
+                Unified Discovery <span className="text-purple-300">2</span>
               </h3>
-              <p className="text-lg text-gray-400 lg:w-2/3 xl:text-2xl">
+              <p className="text-lg text-zinc-300 md:w-2/3 xl:text-2xl">
                 One search bar. One watchlist. Content from all your services in
                 one interface.
               </p>
             </div>
-            <div className="relative flex flex-col gap-2 rounded-3xl bg-zinc-800 px-8 py-12 before:absolute before:inset-0 before:-z-10 before:-m-0.5 before:rounded-3xl before:bg-conic-110 before:from-black before:from-30% before:via-zinc-300 before:to-black before:to-100%">
+            <div className="relative flex flex-col gap-2 rounded-3xl bg-zinc-800 px-8 py-12 before:absolute before:inset-0 before:-z-10 before:-m-0.5 before:rounded-3xl before:bg-conic-110 before:from-black before:from-30% before:via-purple-500 before:to-black before:to-100%">
               <h3 className="font-heading flex justify-between text-2xl font-semibold lg:text-4xl xl:text-5xl">
-                Stream Instantly <span>3</span>
+                Stream Instantly <span className="text-purple-300">3</span>
               </h3>
-              <p className="text-lg text-gray-400 lg:w-2/3 xl:text-2xl">
+              <p className="text-lg text-zinc-300 md:w-2/3 xl:text-2xl">
                 No switching apps or logging in again. Hit play and enjoy —
                 right from here.
               </p>
