@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ReactLenis from "lenis/react";
+import { UIPreview } from "./components/UIPreview";
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -47,6 +48,7 @@ export default function App() {
       <Header />
       <Hero isMobile={isMobile} logoPaths={logoPaths} />
       <HowItWorks isMobile={isMobile} logos={logoPaths} />
+      <UIPreview />
     </>
   );
 }
