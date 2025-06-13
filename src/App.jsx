@@ -7,10 +7,10 @@ import ReactLenis from "lenis/react";
 import { UIPreview } from "./components/UIPreview";
 
 export default function App() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(window.innerWidth < 1024);
     };
     window.addEventListener("resize", handleResize);
     return () => {
@@ -48,7 +48,7 @@ export default function App() {
       <Header />
       <Hero isMobile={isMobile} logoPaths={logoPaths} />
       <HowItWorks isMobile={isMobile} logos={logoPaths} />
-      <UIPreview />
+      <UIPreview isMobile={isMobile} />
     </>
   );
 }
