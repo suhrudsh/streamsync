@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { useRef } from "react";
 import { CameraScrollHandler } from "./CameraScrollHandler";
-import { CTA } from "./CTA";
+import { CTA } from "../CTA";
 import { Lights } from "./Lights";
 import { TilesGroupWithAnimation } from "./TilesGroupWithAnimation";
 

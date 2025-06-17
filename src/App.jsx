@@ -1,6 +1,6 @@
 import { Header } from "./components/Header";
 import { HowItWorks } from "./components/HowItWorksSection/HowItWorks";
-import Hero from "./components/Hero";
+import Hero from "./components/HeroSection/Hero";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ReactLenis from "lenis/react";

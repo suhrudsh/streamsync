@@ -1,7 +1,6 @@
 import { useRef, useState, useLayoutEffect } from "react";
 import { Canvas } from "@react-three/fiber";
-import { FloatingLogoTiles } from "../FloatingLogoTiles";
-import { OrbitControls } from "@react-three/drei";
+import { FloatingLogoTiles } from "./FloatingLogoTiles";
 import { StepCard } from "./StepCard";
 
 export function HowItWorks({ logos, isMobile }) {

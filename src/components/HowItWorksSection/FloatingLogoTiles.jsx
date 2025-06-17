@@ -1,6 +1,6 @@
 // FloatingLogoTiles.jsx
 import { useThree, useFrame } from "@react-three/fiber";
-import LogoTile from "./LogoTile";
+import LogoTile from "../LogoTile";
 import * as THREE from "three";
 import { useMemo, useCallback, useRef } from "react";
 

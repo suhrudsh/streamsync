@@ -1,18 +1,14 @@
 import { useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
-import { useState, useEffect, useMemo, useRef } from "react";
+import { useState, useEffect, useMemo } from "react";
 
-export default function LogoTile({ logo, position, rotation }) {
-  const tileRef = useRef();
-
+export default function LogoTile({ logo, position, rotation, innerRef }) {
   const { nodes } = useGLTF(import.meta.env.BASE_URL + "logo-tile.glb");
   const texture = useTexture(import.meta.env.BASE_URL + `logos/${logo}`);
   texture.flipY = false;
 
-  // 1) state for averaged color
   const [avgColor, setAvgColor] = useState(new THREE.Color(1, 1, 1));
 
-  // 2) compute only once texture.image is loaded
   useEffect(() => {
     const img = texture.image;
     if (!img) return;
@@ -29,29 +25,22 @@ export default function LogoTile({ logo, position, rotation }) {
         g = 0,
         b = 0,
         count = 0;
-
       for (let i = 0; i < data.length; i += 4) {
         const alpha = data[i + 3];
-        // optional: skip fully transparent or near-black pixels
         if (alpha < 10) continue;
-        const red = data[i],
-          green = data[i + 1],
-          blue = data[i + 2];
-
-        r += red;
-        g += green;
-        b += blue;
+        r += data[i];
+        g += data[i + 1];
+        b += data[i + 2];
         count++;
       }
 
-      if (count === 0) return; // fallback
-
+      if (count === 0) return;
       const avg = new THREE.Color(
         r / count / 255,
         g / count / 255,
         b / count / 255,
       );
-      avg.convertSRGBToLinear(); // match PBR expectations
+      avg.convertSRGBToLinear();
       setAvgColor(avg);
     };
 
@@ -63,7 +52,6 @@ export default function LogoTile({ logo, position, rotation }) {
     }
   }, [texture]);
 
-  // 3) build the two materials
   const [logoMat, baseMat] = useMemo(() => {
     const lm = new THREE.MeshPhysicalMaterial({
       map: texture,
@@ -80,9 +68,8 @@ export default function LogoTile({ logo, position, rotation }) {
     return [lm, bm];
   }, [texture, avgColor]);
 
-  // 4) render both sub-meshes
   return (
-    <group ref={tileRef} position={position} scale={4} rotation={rotation}>
+    <group ref={innerRef} position={position} rotation={rotation} scale={4}>
       <mesh geometry={nodes.tile_1.geometry} material={logoMat} />
       <mesh geometry={nodes.tile_2.geometry} material={baseMat} />
     </group>
