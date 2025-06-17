@@ -1,6 +1,5 @@
 import { useRef, useState, useLayoutEffect } from "react";
 import { Canvas } from "@react-three/fiber";
-import { FloatingLogoTiles } from "../FloatingLogoTiles";
 import { OrbitControls } from "@react-three/drei";
 import { StepCard } from "./StepCard";
 import { AnimatedPane } from "./AnimatedPane";
@@ -19,7 +18,7 @@ export function HowItWorks({ logos, isMobile }) {
         </p>
       </div>
 
-      <div className="relative grid min-h-[300svh] w-full grid-cols-1 lg:grid-cols-2">
+      <div className="relative grid min-h-[300svh] w-full grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
         <div className="flex h-full flex-col justify-evenly px-8">
           <StepCard step={1} title="Connect Accounts">
             Securely link your existing subscriptions—Netflix, Prime, Disney+,
@@ -34,7 +33,7 @@ export function HowItWorks({ logos, isMobile }) {
             from here.
           </StepCard>
         </div>
-        <div className="sticky top-0 h-svh">
+        <div className="sticky top-0 col-span-2 h-svh">
           <AnimatedPane activeStep={step} logos={logos} />
         </div>
       </div>
