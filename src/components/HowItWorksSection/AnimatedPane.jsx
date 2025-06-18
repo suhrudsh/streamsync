@@ -2,7 +2,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import LogoSphere from "./LogoSphere";
 
-export function AnimatedPane({ activeStep, logoPaths }) {
+export function AnimatedPane({ logoPaths }) {
   return (
     <>
       <Canvas camera={{ position: [0, 10, 20], fov: 50 }}>

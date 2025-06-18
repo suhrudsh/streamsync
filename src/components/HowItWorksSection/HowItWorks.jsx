@@ -1,10 +1,7 @@
-import { useState } from "react";
 import { StepCard } from "./StepCard";
 import { AnimatedPane } from "./AnimatedPane";
 
-export function HowItWorks({ logoPaths, isMobile }) {
-  const [step, setStep] = useState(0);
-
+export function HowItWorks({ logoPaths }) {
   return (
     <section className="relative space-y-12 py-24">
       <div className="flex flex-col items-center gap-4 text-center">
@@ -18,21 +15,21 @@ export function HowItWorks({ logoPaths, isMobile }) {
 
       <div className="relative grid min-h-[300svh] w-full grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
         <div className="flex h-full flex-col justify-evenly px-8">
-          <StepCard step={1} title="Connect Accounts">
+          <StepCard title="Connect Accounts">
             Securely link your existing subscriptions—Netflix, Prime, Disney+,
             and more.
           </StepCard>
-          <StepCard step={2} title="Unified Discovery">
+          <StepCard title="Unified Discovery">
             One search bar. One watchlist. Content from all your services in one
             interface.
           </StepCard>
-          <StepCard step={3} title="Stream Instantly">
+          <StepCard title="Stream Instantly">
             No switching apps or logging in again. Hit play and enjoy — right
             from here.
           </StepCard>
         </div>
         <div className="sticky top-0 col-span-2 h-svh">
-          <AnimatedPane activeStep={step} logoPaths={logoPaths} />
+          <AnimatedPane logoPaths={logoPaths} />
         </div>
       </div>
     </section>
