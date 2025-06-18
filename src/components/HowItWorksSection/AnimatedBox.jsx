@@ -23,7 +23,7 @@ export function AnimatedBox({ position, size }) {
 
   return (
     <mesh ref={cube} position={position}>
-      <boxGeometry args={size} />
+      <boxGeometry args={[1 * size, 1 * size, 1 * size]} />
       <meshPhysicalMaterial
         emissive={"#9810fa"}
         emissiveIntensity={2.5}

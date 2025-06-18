@@ -1,3 +1,4 @@
+import { LogoTileBeacon } from "./LogoTileBeacon";
 import { Suspense, useMemo } from "react";
 import LogoTile from "../../tiles/LogoTile";
 import * as THREE from "three";
@@ -20,7 +21,7 @@ export default function LogoSphere({ logoPaths }) {
 
       const lookAt = new THREE.Vector3(x, y, z).normalize().negate();
       const quat = new THREE.Quaternion().setFromUnitVectors(
-        new THREE.Vector3(0, 0, 1),
+        new THREE.Vector3(0, -1, 0),
         lookAt,
       );
       const euler = new THREE.Euler().setFromQuaternion(quat);
@@ -34,15 +35,14 @@ export default function LogoSphere({ logoPaths }) {
   return (
     <Suspense fallback={null}>
       {tiles.map((tile, i) => (
-        <LogoTile
+        <LogoTileBeacon
           key={tile.logo + i}
+          position={tile.position}
+          rotation={tile.rotation}
           geometry1={nodes.tile_1.geometry}
           geometry2={nodes.tile_2.geometry}
           texture={textures[tile.logo]}
-          logo={tile.logo}
-          position={tile.position}
-          rotation={tile.rotation}
-          scale={1}
+          i={i}
         />
       ))}
     </Suspense>

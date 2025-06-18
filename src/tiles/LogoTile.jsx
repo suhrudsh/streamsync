@@ -5,8 +5,8 @@ export default function LogoTile({
   geometry1,
   geometry2,
   texture,
-  position,
-  rotation,
+  position = [0, 0, 0],
+  rotation = [0, 0, 0],
   innerRef,
   scale = 4,
 }) {
