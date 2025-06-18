@@ -1,9 +1,12 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import * as THREE from "three";
-import LogoTile from "../LogoTile";
+import LogoTile from "../../tiles/LogoTile";
 
 export default function LogoStackTile({
+  geometry1,
+  geometry2,
+  texture,
   logo,
   position,
   rotation,
@@ -63,6 +66,9 @@ export default function LogoStackTile({
   return (
     <group onPointerOver={handleHover} onPointerOut={handleUnhover}>
       <LogoTile
+        geometry1={geometry1}
+        geometry2={geometry2}
+        texture={texture}
         logo={logo}
         position={position}
         rotation={rotation}

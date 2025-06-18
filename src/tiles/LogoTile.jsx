@@ -1,18 +1,21 @@
-import { useGLTF, useTexture } from "@react-three/drei";
+import React, { useState, useEffect, useMemo } from "react";
 import * as THREE from "three";
-import { useState, useEffect, useMemo } from "react";
 
-export default function LogoTile({ logo, position, rotation, innerRef }) {
-  const { nodes } = useGLTF(import.meta.env.BASE_URL + "logo-tile.glb");
-  const texture = useTexture(import.meta.env.BASE_URL + `logos/${logo}`);
-  texture.flipY = false;
-
+export default function LogoTile({
+  geometry1,
+  geometry2,
+  texture,
+  position,
+  rotation,
+  innerRef,
+  scale = 4,
+}) {
+  // ✅ Hooks always called
   const [avgColor, setAvgColor] = useState(new THREE.Color(1, 1, 1));
 
   useEffect(() => {
+    if (!texture || !texture.image) return;
     const img = texture.image;
-    if (!img) return;
-
     const computeTrueAverage = () => {
       const canvas = document.createElement("canvas");
       canvas.width = img.width;
@@ -26,15 +29,13 @@ export default function LogoTile({ logo, position, rotation, innerRef }) {
         b = 0,
         count = 0;
       for (let i = 0; i < data.length; i += 4) {
-        const alpha = data[i + 3];
-        if (alpha < 10) continue;
+        if (data[i + 3] < 10) continue;
         r += data[i];
         g += data[i + 1];
         b += data[i + 2];
         count++;
       }
-
-      if (count === 0) return;
+      if (!count) return;
       const avg = new THREE.Color(
         r / count / 255,
         g / count / 255,
@@ -53,8 +54,9 @@ export default function LogoTile({ logo, position, rotation, innerRef }) {
   }, [texture]);
 
   const [logoMat, baseMat] = useMemo(() => {
+    // Only use texture if it's defined
     const lm = new THREE.MeshPhysicalMaterial({
-      map: texture,
+      map: texture && texture.image ? texture : null,
       roughness: 0.6,
       metalness: 0.4,
       toneMapped: false,
@@ -69,9 +71,9 @@ export default function LogoTile({ logo, position, rotation, innerRef }) {
   }, [texture, avgColor]);
 
   return (
-    <group ref={innerRef} position={position} rotation={rotation} scale={4}>
-      <mesh geometry={nodes.tile_1.geometry} material={logoMat} />
-      <mesh geometry={nodes.tile_2.geometry} material={baseMat} />
+    <group ref={innerRef} position={position} rotation={rotation} scale={scale}>
+      <mesh geometry={geometry1} material={logoMat} />
+      <mesh geometry={geometry2} material={baseMat} />
     </group>
   );
 }

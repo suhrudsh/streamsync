@@ -1,0 +1,50 @@
+import { Suspense, useMemo } from "react";
+import LogoTile from "../../tiles/LogoTile";
+import * as THREE from "three";
+import { useTiles } from "../../tiles/useTile";
+
+export default function LogoSphere({ logoPaths }) {
+  const { nodes, textures } = useTiles();
+
+  const tiles = useMemo(() => {
+    const radius = 5;
+    return logoPaths.map((logo, i) => {
+      const phi = Math.acos(1 - (2 * (i + 0.5)) / logoPaths.length);
+      const theta = Math.PI * (1 + Math.sqrt(5)) * (i + 0.5);
+
+      const x = radius * Math.sin(phi) * Math.cos(theta);
+      const y = radius * Math.sin(phi) * Math.sin(theta);
+      const z = radius * Math.cos(phi);
+
+      const position = [x, y, z];
+
+      const lookAt = new THREE.Vector3(x, y, z).normalize().negate();
+      const quat = new THREE.Quaternion().setFromUnitVectors(
+        new THREE.Vector3(0, 0, 1),
+        lookAt,
+      );
+      const euler = new THREE.Euler().setFromQuaternion(quat);
+
+      const rotation = [euler.x, euler.y, euler.z];
+
+      return { logo, position, rotation };
+    });
+  }, [logoPaths]);
+
+  return (
+    <Suspense fallback={null}>
+      {tiles.map((tile, i) => (
+        <LogoTile
+          key={tile.logo + i}
+          geometry1={nodes.tile_1.geometry}
+          geometry2={nodes.tile_2.geometry}
+          texture={textures[tile.logo]}
+          logo={tile.logo}
+          position={tile.position}
+          rotation={tile.rotation}
+          scale={1}
+        />
+      ))}
+    </Suspense>
+  );
+}

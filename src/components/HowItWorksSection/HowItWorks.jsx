@@ -1,10 +1,8 @@
-import { useRef, useState, useLayoutEffect } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { useState } from "react";
 import { StepCard } from "./StepCard";
 import { AnimatedPane } from "./AnimatedPane";
 
-export function HowItWorks({ logos, isMobile }) {
+export function HowItWorks({ logoPaths, isMobile }) {
   const [step, setStep] = useState(0);
 
   return (
@@ -34,7 +32,7 @@ export function HowItWorks({ logos, isMobile }) {
           </StepCard>
         </div>
         <div className="sticky top-0 col-span-2 h-svh">
-          <AnimatedPane activeStep={step} logos={logos} />
+          <AnimatedPane activeStep={step} logoPaths={logoPaths} />
         </div>
       </div>
     </section>

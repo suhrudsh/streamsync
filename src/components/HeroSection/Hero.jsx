@@ -4,9 +4,11 @@ import { CameraScrollHandler } from "./CameraScrollHandler";
 import { CTA } from "../CTA";
 import { Lights } from "./Lights";
 import { TilesGroupWithAnimation } from "./TilesGroupWithAnimation";
+import { useTiles } from "../../tiles/useTile";
 
 export default function Hero({ logoPaths, isMobile }) {
   const scrollTriggerAreaRef = useRef();
+  const { nodes, textures } = useTiles();
 
   const numberOfTiles = logoPaths.length;
   const lastTileY = (numberOfTiles - 1) * -1.25;
@@ -35,6 +37,8 @@ export default function Hero({ logoPaths, isMobile }) {
             />
             <TilesGroupWithAnimation
               scrollTriggerAreaRef={scrollTriggerAreaRef}
+              nodes={nodes}
+              textures={textures}
               logoPaths={logoPaths}
             />
           </Canvas>
