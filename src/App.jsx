@@ -54,8 +54,8 @@ export default function App() {
       >
         <Hero isMobile={isMobile} logoPaths={logoPaths} />
         <HowItWorks isMobile={isMobile} logoPaths={logoPaths} />
+        <UIPreview isMobile={isMobile} />
       </TileProvider>
-      <UIPreview isMobile={isMobile} />
     </>
   );
 }
