@@ -24,11 +24,9 @@ export default function LogoSphere({ logoPaths }) {
         new THREE.Vector3(0, -1, 0),
         lookAt,
       );
-      const euler = new THREE.Euler().setFromQuaternion(quat);
+      const quaternion = quat.toArray(); // [x, y, z, w]
 
-      const rotation = [euler.x, euler.y, euler.z];
-
-      return { logo, position, rotation };
+      return { logo, position, quaternion };
     });
   }, [logoPaths]);
 
@@ -38,7 +36,7 @@ export default function LogoSphere({ logoPaths }) {
         <LogoTileBeacon
           key={tile.logo + i}
           position={tile.position}
-          rotation={tile.rotation}
+          quaternion={tile.quaternion}
           geometry1={nodes.tile_1.geometry}
           geometry2={nodes.tile_2.geometry}
           texture={textures[tile.logo]}
