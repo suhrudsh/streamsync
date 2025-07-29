@@ -97,34 +97,34 @@ export function UIPreview({ isMobile }) {
 
   return (
     <section ref={containerRef} className="h-[300svh] w-full bg-black">
-      <div className="sticky top-0 flex h-svh w-full items-center justify-center overflow-hidden">
-        <div ref={stackRef} className="relative h-full w-full">
+      <div className="sticky top-0 flex h-lvh w-full items-center justify-center overflow-hidden">
+        <div ref={stackRef} className="relative h-full w-full text-balance">
           {/* Panel 0 - Homepage */}
           <div
             ref={(el) => setPanelRef(el, 0)}
-            className="absolute inset-0 flex items-center justify-center md:px-8 lg:px-16"
+            className="absolute inset-0 flex items-center justify-center md:px-8 lg:px-32"
           >
-            <div className="grid w-full items-center gap-8 lg:grid-cols-3">
+            <div className="flex w-full flex-col items-center gap-8 lg:flex-row">
               {isMobile && (
                 <img
                   ref={setElementRef(0, "image")}
-                  src="ui-preview-homepage.webp"
+                  src="uiPreview/ui-preview-homepage.webp"
                   alt="Homepage Preview"
-                  className="rounded-3xl shadow-xl shadow-purple-500/30 lg:col-span-2"
+                  className="rounded-3xl shadow-xl shadow-purple-500/30"
                 />
               )}
-              <div className="flex flex-col gap-4 text-center lg:col-span-1 lg:text-left">
+              <div className="flex w-full flex-col gap-4 text-center lg:text-center">
                 <h3
                   ref={setElementRef(0, "heading")}
                   className="font-heading text-3xl font-bold text-white lg:text-3xl xl:text-4xl"
                 >
-                  All your platforms. One powerful hub.
+                  All your platforms. <br /> One powerful hub.
                 </h3>
                 <p
                   ref={setElementRef(0, "paragraph")}
                   className="text-xl text-zinc-300 lg:text-xl xl:text-2xl"
                 >
-                  Jump right into trending content — no switching apps.
+                  Jump right into trending content <br /> — no switching apps.
                 </p>
               </div>
               {!isMobile && (
@@ -134,9 +134,9 @@ export function UIPreview({ isMobile }) {
                     // Store image position for desktop
                     panelElementsOrder.current[0].imagePosition = "last";
                   }}
-                  src="ui-preview-homepage.webp"
+                  src="uiPreview/ui-preview-homepage.webp"
                   alt="Homepage Preview"
-                  className="rounded-3xl shadow-xl shadow-purple-500/30 lg:col-span-2"
+                  className="w-1/2 rounded-3xl shadow-xl shadow-purple-500/30"
                 />
               )}
             </div>
@@ -145,19 +145,19 @@ export function UIPreview({ isMobile }) {
           {/* Panel 1 - Watchlist */}
           <div
             ref={(el) => setPanelRef(el, 1)}
-            className="absolute inset-0 flex items-center justify-center lg:px-16"
+            className="absolute inset-0 flex items-center justify-center lg:px-32"
           >
-            <div className="grid w-full items-center gap-8 lg:grid-cols-3">
+            <div className="flex w-full flex-col items-center gap-8 lg:flex-row">
               <img
                 ref={(el) => {
                   setElementRef(1, "image")(el);
                   panelElementsOrder.current[1].imagePosition = "first";
                 }}
-                src="ui-preview-watchlist.webp"
+                src="uiPreview/ui-preview-watchlist.webp"
                 alt="Watchlist Preview"
-                className="rounded-3xl shadow-xl shadow-purple-500/30 lg:col-span-2"
+                className="rounded-3xl shadow-xl shadow-purple-500/30 lg:w-1/2"
               />
-              <div className="flex flex-col gap-4 text-center lg:col-span-1 lg:text-left">
+              <div className="flex w-full flex-col gap-4 text-center">
                 <h3
                   ref={setElementRef(1, "heading")}
                   className="font-heading text-3xl font-bold text-white lg:text-3xl xl:text-4xl"
@@ -177,18 +177,18 @@ export function UIPreview({ isMobile }) {
           {/* Panel 2 - Search */}
           <div
             ref={(el) => setPanelRef(el, 2)}
-            className="absolute inset-0 flex items-center justify-center lg:px-16"
+            className="absolute inset-0 flex items-center justify-center lg:px-32"
           >
-            <div className="grid w-full items-center gap-8 lg:grid-cols-3">
+            <div className="flex w-full flex-col items-center gap-8 lg:flex-row">
               {isMobile && (
                 <img
                   ref={setElementRef(2, "image")}
-                  src="ui-preview-search.webp"
+                  src="uiPreview/ui-preview-search.webp"
                   alt="Search Preview"
-                  className="rounded-3xl shadow-xl shadow-purple-500/30 lg:col-span-2"
+                  className="rounded-3xl shadow-xl shadow-purple-500/30"
                 />
               )}
-              <div className="flex flex-col gap-4 text-center lg:col-span-1 lg:text-left">
+              <div className="flex w-full flex-col gap-4 text-center">
                 <h3
                   ref={setElementRef(2, "heading")}
                   className="font-heading text-3xl font-bold text-white lg:text-3xl xl:text-4xl"
@@ -208,9 +208,9 @@ export function UIPreview({ isMobile }) {
                     setElementRef(2, "image")(el);
                     panelElementsOrder.current[2].imagePosition = "last";
                   }}
-                  src="ui-preview-search.webp"
+                  src="uiPreview/ui-preview-search.webp"
                   alt="Search Preview"
-                  className="rounded-3xl shadow-xl shadow-purple-500/30 lg:col-span-2"
+                  className="w-1/2 rounded-3xl shadow-xl shadow-purple-500/30"
                 />
               )}
             </div>
