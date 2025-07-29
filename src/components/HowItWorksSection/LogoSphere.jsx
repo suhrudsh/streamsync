@@ -1,5 +1,5 @@
 import { LogoTileBeacon } from "./LogoTileBeacon";
-import { Suspense, useMemo } from "react";
+import { useTiles } from "../../tiles/useTiles";
 import LogoTile from "../../tiles/LogoTile";
 import * as THREE from "three";
 import { useTiles } from "../../tiles/useTile";

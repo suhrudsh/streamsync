@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { TileContext } from "./useTile"; // ← import, don’t re-create
+import { TileContext } from "./useTiles"; // ← import, don’t re-create
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { TextureLoader } from "three";
 

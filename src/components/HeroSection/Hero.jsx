@@ -4,7 +4,7 @@ import { CameraScrollHandler } from "./CameraScrollHandler";
 import { CTA } from "../CTA";
 import { Lights } from "./Lights";
 import { TilesGroupWithAnimation } from "./TilesGroupWithAnimation";
-import { useTiles } from "../../tiles/useTile";
+import { useTiles } from "../../tiles/useTiles";
 
 export default function Hero({ logoPaths, isMobile }) {
   const scrollTriggerAreaRef = useRef();
