@@ -72,7 +72,7 @@ export default function LogoStackTile({
         logo={logo}
         position={position}
         rotation={rotation}
-        innerRef={tileRef}
+        ref={tileRef}
       />
     </group>
   );

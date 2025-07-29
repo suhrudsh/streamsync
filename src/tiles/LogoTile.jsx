@@ -7,7 +7,7 @@ export default function LogoTile({
   texture,
   position = [0, 0, 0],
   rotation = [0, 0, 0],
-  innerRef,
+  ref,
   scale = 4,
 }) {
   // ✅ Hooks always called
@@ -71,7 +71,7 @@ export default function LogoTile({
   }, [texture, avgColor]);
 
   return (
-    <group ref={innerRef} position={position} rotation={rotation} scale={scale}>
+    <group ref={ref} position={position} rotation={rotation} scale={scale}>
       <mesh geometry={geometry1} material={logoMat} />
       <mesh geometry={geometry2} material={baseMat} />
     </group>
