@@ -15,13 +15,13 @@ export default function Hero({ logoPaths, isMobile }) {
   const cameraTargetY = lastTileY + 5; // Adjust offset as needed
 
   return (
-    <section className="flex flex-col gap-8">
+    <section className="flex flex-col gap-12">
       <div
         ref={scrollTriggerAreaRef}
         className="flex h-[200svh] w-full flex-col"
       >
         <div className="sticky top-30">
-          <h1 className="font-heading flex flex-col gap-2 text-center text-3xl font-black md:text-5xl lg:text-7xl xl:text-9xl">
+          <h1 className="font-heading flex flex-col gap-2 text-center text-3xl font-black md:text-5xl lg:text-7xl xl:text-9xl xl:leading-28">
             <span>All your streaming platforms.</span>
             <span className="text-purple-300">One interface.</span>
           </h1>
