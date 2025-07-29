@@ -1,25 +1,24 @@
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
 import LogoSphere from "./LogoSphere";
-import { Bloom, EffectComposer } from "@react-three/postprocessing";
+import { AnimatedCamera } from "./AnimatedCamera";
+import { useState } from "react";
 
-export function AnimatedPane({ logoPaths }) {
+export function AnimatedPane({ logoPaths, wrapperRef }) {
+  const [rotateCamera, setRotateCamera] = useState(false);
+
   return (
-    <>
-      <Canvas camera={{ position: [0, -5, 12.5], fov: 50 }} shadows>
+    <div className="mask-radial-fade h-full w-full">
+      <Canvas camera={{ position: [16, 10, 5], fov: 50 }} shadows>
         {import.meta.env.DEV && <axesHelper args={[5]} />}
-        <ambientLight intensity={1} />
-        <LogoSphere logoPaths={logoPaths} />
-        <OrbitControls />
-        <EffectComposer>
-          <Bloom
-            intensity={1}
-            luminanceThreshold={0.2}
-            luminanceSmoothing={0.05}
-            mipmapBlur
-          />
-        </EffectComposer>
+        <ambientLight intensity={4} />
+        <pointLight intensity={100} />
+        <LogoSphere
+          logoPaths={logoPaths}
+          wrapperRef={wrapperRef}
+          setRotateCamera={setRotateCamera}
+        />
+        {rotateCamera && <AnimatedCamera />}
       </Canvas>
-    </>
+    </div>
   );
 }
