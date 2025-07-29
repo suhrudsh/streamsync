@@ -6,7 +6,12 @@ import LogoStackTile from "./LogoStackTile";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function TilesGroupWithAnimation({ scrollTriggerAreaRef, logoPaths }) {
+export function TilesGroupWithAnimation({
+  scrollTriggerAreaRef,
+  nodes,
+  textures,
+  logoPaths,
+}) {
   const tilesGroupRef = useRef();
 
   useGSAP(() => {
@@ -29,6 +34,9 @@ export function TilesGroupWithAnimation({ scrollTriggerAreaRef, logoPaths }) {
         <LogoStackTile
           key={index}
           logo={logo}
+          geometry1={nodes.tile_1.geometry}
+          geometry2={nodes.tile_2.geometry}
+          texture={textures[logo]}
           position={[0, index * -1.25, 0]}
           rotation={[0, index * -0.1, 0]}
           animationDirection={index % 4}

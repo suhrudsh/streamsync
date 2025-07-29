@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ReactLenis from "lenis/react";
 import { UIPreview } from "./components/UIPreview";
+import { TileProvider } from "./tiles/TileProvider";
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
@@ -46,9 +47,15 @@ export default function App() {
     <>
       <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
       <Header />
-      <Hero isMobile={isMobile} logoPaths={logoPaths} />
-      <HowItWorks isMobile={isMobile} logos={logoPaths} />
-      <UIPreview isMobile={isMobile} />
+      <TileProvider
+        glbUrl={import.meta.env.BASE_URL + "logo-tile.glb"}
+        logoPaths={logoPaths}
+        baseUrl={import.meta.env.BASE_URL}
+      >
+        <Hero isMobile={isMobile} logoPaths={logoPaths} />
+        <HowItWorks isMobile={isMobile} logoPaths={logoPaths} />
+        <UIPreview isMobile={isMobile} />
+      </TileProvider>
     </>
   );
 }
