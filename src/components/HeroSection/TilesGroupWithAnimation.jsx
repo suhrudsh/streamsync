@@ -13,11 +13,6 @@ export function TilesGroupWithAnimation({
   logoPaths,
 }) {
   const tilesGroupRef = useRef();
-  console.log("🏗 Group got:", {
-    nodes: Object.keys(nodes),
-    textures: Object.keys(textures),
-    logoPaths,
-  });
 
   useGSAP(() => {
     if (!tilesGroupRef.current || !scrollTriggerAreaRef.current) return;
