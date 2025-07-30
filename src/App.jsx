@@ -4,8 +4,9 @@ import Hero from "./components/HeroSection/Hero";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ReactLenis from "lenis/react";
-import { UIPreview } from "./components/UIPreview";
 import { TileProvider } from "./tiles/TileProvider";
+import { UIPreview } from "./components/UIPreviewSection/UIPreview";
+import { UIPreviewMobile } from "./components/UIPreviewSection/UIPreviewMobile";
 import { HowItWorksMobile } from "./components/HowItWorksSection/HowItWorksMobile";
 
 export default function App() {
@@ -59,6 +60,7 @@ export default function App() {
         ) : (
           <HowItWorks logoPaths={logoPaths} />
         )}
+        {isMobile ? <UIPreviewMobile /> : <UIPreview />}
       </TileProvider>
     </>
   );
