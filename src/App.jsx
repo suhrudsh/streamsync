@@ -6,6 +6,7 @@ import gsap from "gsap";
 import ReactLenis from "lenis/react";
 import { UIPreview } from "./components/UIPreview";
 import { TileProvider } from "./tiles/TileProvider";
+import { HowItWorksMobile } from "./components/HowItWorksSection/HowItWorksMobile";
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
@@ -53,8 +54,11 @@ export default function App() {
         baseUrl={import.meta.env.BASE_URL}
       >
         <Hero isMobile={isMobile} logoPaths={logoPaths} />
-        <HowItWorks isMobile={isMobile} logoPaths={logoPaths} />
-        <UIPreview isMobile={isMobile} />
+        {isMobile ? (
+          <HowItWorksMobile logoPaths={logoPaths} />
+        ) : (
+          <HowItWorks logoPaths={logoPaths} />
+        )}
       </TileProvider>
     </>
   );

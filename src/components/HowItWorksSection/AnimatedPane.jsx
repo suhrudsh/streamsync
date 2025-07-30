@@ -7,7 +7,7 @@ export function AnimatedPane({ logoPaths, wrapperRef }) {
   const [rotateCamera, setRotateCamera] = useState(false);
 
   return (
-    <div className="mask-radial-fade h-full w-full">
+    <div className="mask-radial-fade h-1/2 w-full lg:h-full">
       <Canvas camera={{ position: [16, 10, 5], fov: 50 }} shadows>
         {import.meta.env.DEV && <axesHelper args={[5]} />}
         <ambientLight intensity={4} />
