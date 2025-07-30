@@ -145,12 +145,16 @@ export default function LogoSphere({ logoPaths, wrapperRef, setRotateCamera }) {
           scrub: true,
         },
       })
-      .to(orb.scale, {
-        x: 1,
-        y: 1,
-        z: 1,
-        ease: "power2.out",
-      })
+      .fromTo(
+        orb.scale,
+        { x: 0, y: 0, z: 0 },
+        {
+          x: 1,
+          y: 1,
+          z: 1,
+          ease: "power2.out",
+        },
+      )
       .to(obj, {
         t: 1,
         ease: "none",
@@ -174,18 +178,22 @@ export default function LogoSphere({ logoPaths, wrapperRef, setRotateCamera }) {
     const orb = orbRef.current;
     if (!orb) return;
 
-    gsap.to(orb.scale, {
-      scrollTrigger: {
-        trigger: wrapperRef.current,
-        start: "66% 75%",
-        end: "bottom center",
-        scrub: true,
+    gsap.fromTo(
+      orb.scale,
+      { x: 1, y: 1, z: 1 },
+      {
+        x: 40,
+        y: 40,
+        z: 40,
+        ease: "power2.inOut",
+        scrollTrigger: {
+          trigger: wrapperRef.current,
+          start: "66% 75%",
+          end: "bottom center",
+          scrub: true,
+        },
       },
-      x: 40,
-      y: 40,
-      z: 40,
-      ease: "power2.inOut",
-    });
+    );
   }, []);
 
   return (
