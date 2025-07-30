@@ -35,7 +35,7 @@ export function HowItWorks({ logoPaths }) {
   }, []);
 
   return (
-    <section className="relative mb-24 px-24">
+    <section className="relative mb-24 pl-12 xl:px-24">
       <div className="flex flex-col items-center gap-4 text-center">
         <h2 className="font-heading text-4xl font-extrabold lg:text-4xl xl:text-6xl">
           Watch anything. From anywhere.
@@ -46,7 +46,7 @@ export function HowItWorks({ logoPaths }) {
       </div>
 
       <div ref={wrapperRef} className="min-h-[300svh] w-full">
-        <div className="sticky top-0 grid h-svh grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-5">
+        <div className="sticky top-0 grid h-svh grid-cols-5 gap-8">
           <div className="col-span-2 flex flex-col justify-center gap-4 text-balance">
             <StepCard
               ref={stepOneRef}

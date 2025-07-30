@@ -27,7 +27,7 @@ export function UIPreview() {
   return (
     <section
       ref={wrapperRef}
-      className="relative grid h-[300svh] gap-8 px-24 xl:grid-cols-5"
+      className="relative grid h-[300svh] grid-cols-5 gap-8 px-12 xl:px-24"
     >
       <div className="snap col-span-2 snap-y snap-mandatory">
         <UIPreviewText heading={"All your platforms.\nOne powerful hub."}>

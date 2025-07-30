@@ -54,7 +54,7 @@ export function HowItWorksMobile({ logoPaths }) {
             <div ref={cardsWrapperRef} className="px-2 pt-6">
               <div
                 ref={cardsInnerWrapperRef}
-                className="flex flex-col gap-4 text-balance"
+                className="flex flex-col items-center gap-4 text-balance"
               >
                 <StepCard
                   ref={stepOneRef}
