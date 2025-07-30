@@ -15,7 +15,7 @@ export default function Hero({ logoPaths, isMobile }) {
   const cameraTargetY = lastTileY + 5; // Adjust offset as needed
 
   return (
-    <section className="flex flex-col gap-12">
+    <section className="mb-24 flex flex-col gap-12">
       <div
         ref={scrollTriggerAreaRef}
         className="flex h-[200svh] w-full flex-col"
