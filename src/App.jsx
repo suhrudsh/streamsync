@@ -8,6 +8,7 @@ import { TileProvider } from "./tiles/TileProvider";
 import { UIPreview } from "./components/UIPreviewSection/UIPreview";
 import { UIPreviewMobile } from "./components/UIPreviewSection/UIPreviewMobile";
 import { HowItWorksMobile } from "./components/HowItWorksSection/HowItWorksMobile";
+import { FinalCTA } from "./components/FinalCTA";
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
@@ -61,6 +62,7 @@ export default function App() {
           <HowItWorks logoPaths={logoPaths} />
         )}
         {isMobile ? <UIPreviewMobile /> : <UIPreview />}
+        <FinalCTA isMobile={isMobile} logos={logoPaths} />
       </TileProvider>
     </>
   );
