@@ -2,9 +2,15 @@ export function CTA({ header }) {
   return (
     <a
       href=""
-      className={`relative inline-block self-center rounded-2xl bg-zinc-800 px-8 py-2 font-bold tracking-wide text-white transition duration-300 before:transition before:duration-300 hover:bg-white hover:text-black hover:before:from-zinc-300 hover:before:to-zinc-300 ${header ? "text-xs md:text-base lg:text-lg" : "text-base lg:text-lg xl:text-2xl"} before:absolute before:inset-0 before:-z-10 before:-m-0.5 before:rounded-2xl before:bg-conic-110 before:from-black before:from-35% before:via-zinc-300 before:to-black before:to-100%`}
+      className={`group relative inset-0 z-0 -m-0.5 flex self-center rounded-2xl bg-zinc-800 bg-conic-110 from-black from-35% via-zinc-300 to-black to-100% px-0.5 py-0.5 font-bold tracking-wide text-white transition duration-300 hover:bg-white hover:from-zinc-300 hover:to-zinc-300 hover:text-black ${
+        header
+          ? "text-xs md:text-base lg:text-lg"
+          : "text-base lg:text-lg xl:text-2xl"
+      }`}
     >
-      Join Waitlist
+      <span className="relative z-10 rounded-2xl bg-zinc-800 px-8 py-2 transition duration-300 group-hover:bg-white group-hover:text-black">
+        Join Waitlist
+      </span>
     </a>
   );
 }
