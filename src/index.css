@@ -38,3 +38,7 @@
   -webkit-mask-size: cover;
   mask-size: cover;
 }
+
+html {
+  scrollbar-gutter: stable both-edges;
+}
