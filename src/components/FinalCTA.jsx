@@ -33,6 +33,7 @@ export function FinalCTA({ logos, isMobile }) {
 
   return (
     <section
+      id="get-started"
       ref={secRef}
       className="relative flex h-svh flex-col items-center justify-center gap-12 bg-gradient-to-b from-black from-50% to-purple-900 py-24 lg:bg-none"
     >

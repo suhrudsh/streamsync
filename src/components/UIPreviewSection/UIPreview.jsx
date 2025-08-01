@@ -26,8 +26,9 @@ export function UIPreview() {
 
   return (
     <section
+      id="ui-preview"
       ref={wrapperRef}
-      className="relative grid h-[300svh] grid-cols-5 gap-8 px-12 xl:px-24"
+      className="relative grid h-[300svh] grid-cols-5 gap-8 bg-black px-12 xl:px-24"
     >
       <div className="snap col-span-2 snap-y snap-mandatory">
         <UIPreviewText heading={"All your platforms.\nOne powerful hub."}>
@@ -37,7 +38,7 @@ export function UIPreview() {
           See everything you’ve saved across Netflix, Prime & more.
         </UIPreviewText>
         <UIPreviewText heading={"Find it once.\nPlay it anywhere."}>
-          Search across all your subscriptions with one click.
+          Search across all your <br /> subscriptions with one click.
         </UIPreviewText>
       </div>
       <div className="sticky top-0 col-span-3 flex h-svh w-full items-center justify-end">

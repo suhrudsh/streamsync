@@ -2,7 +2,7 @@ import { UIPreviewText } from "./UIPreviewText";
 
 export function UIPreviewMobile() {
   return (
-    <section className="mb-24 md:space-y-32">
+    <section id="ui-preview" className="bg-black md:space-y-32">
       <div className="flex h-lvh flex-col items-center justify-evenly md:h-fit md:gap-16">
         <img
           src="uiPreview/ui-preview-homepage.webp"

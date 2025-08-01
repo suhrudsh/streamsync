@@ -15,7 +15,7 @@ export default function Hero({ logoPaths, isMobile }) {
   const cameraTargetY = lastTileY + 5; // Adjust offset as needed
 
   return (
-    <section className="mb-24 flex flex-col gap-12">
+    <section className="flex flex-col gap-12 bg-black pb-24">
       <div
         ref={scrollTriggerAreaRef}
         className="flex h-[200svh] w-full flex-col"
@@ -26,7 +26,7 @@ export default function Hero({ logoPaths, isMobile }) {
             <span className="text-purple-300">One interface.</span>
           </h1>
         </div>
-        <div className="sticky top-0 z-0 h-svh">
+        <div className="sticky top-0 h-svh">
           <Canvas camera={{ position: [-8, 10, -15], fov: isMobile ? 64 : 50 }}>
             {import.meta.env.DEV && <axesHelper args={[5]} />}
             <Lights />

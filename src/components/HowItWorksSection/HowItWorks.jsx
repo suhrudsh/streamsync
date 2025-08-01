@@ -35,7 +35,10 @@ export function HowItWorks({ logoPaths }) {
   }, []);
 
   return (
-    <section className="relative mb-24 pl-12 xl:px-24">
+    <section
+      id="how-it-works"
+      className="relative bg-black pb-24 pl-12 xl:px-24"
+    >
       <div className="flex flex-col items-center gap-4 text-center">
         <h2 className="font-heading text-4xl font-extrabold lg:text-4xl xl:text-6xl">
           Watch anything. From anywhere.

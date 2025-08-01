@@ -9,6 +9,7 @@ import { UIPreview } from "./components/UIPreviewSection/UIPreview";
 import { UIPreviewMobile } from "./components/UIPreviewSection/UIPreviewMobile";
 import { HowItWorksMobile } from "./components/HowItWorksSection/HowItWorksMobile";
 import { FinalCTA } from "./components/FinalCTA";
+import { Footer } from "./components/Footer";
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
@@ -49,21 +50,24 @@ export default function App() {
   return (
     <>
       <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
-      <Header />
-      <TileProvider
-        glbUrl={import.meta.env.BASE_URL + "logo-tile.glb"}
-        logoPaths={logoPaths}
-        baseUrl={import.meta.env.BASE_URL}
-      >
-        <Hero isMobile={isMobile} logoPaths={logoPaths} />
-        {isMobile ? (
-          <HowItWorksMobile logoPaths={logoPaths} />
-        ) : (
-          <HowItWorks logoPaths={logoPaths} />
-        )}
-        {isMobile ? <UIPreviewMobile /> : <UIPreview />}
-        <FinalCTA isMobile={isMobile} logos={logoPaths} />
-      </TileProvider>
+      <div className="relative z-10">
+        <Header />
+        <TileProvider
+          glbUrl={import.meta.env.BASE_URL + "logo-tile.glb"}
+          logoPaths={logoPaths}
+          baseUrl={import.meta.env.BASE_URL}
+        >
+          <Hero isMobile={isMobile} logoPaths={logoPaths} />
+          {isMobile ? (
+            <HowItWorksMobile logoPaths={logoPaths} />
+          ) : (
+            <HowItWorks logoPaths={logoPaths} />
+          )}
+          {isMobile ? <UIPreviewMobile /> : <UIPreview />}
+          <FinalCTA isMobile={isMobile} logos={logoPaths} />
+          <Footer />
+        </TileProvider>
+      </div>
     </>
   );
 }
