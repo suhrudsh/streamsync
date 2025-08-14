@@ -22,20 +22,22 @@ export function FinalCTA({ logos, isMobile }) {
   }, []);
 
   const positionsPct = [
-    { x: 6500, z: -5000 },
-    { x: 6500, z: 0 },
-    { x: 6500, z: 5000 },
-    { x: -6500, z: -5000 },
-    { x: -6500, z: 0 },
-    { x: -6500, z: 5000 },
-    // …and so on
+    { x: 6500, z: -5000, offset: [1.2, -1.8, 0.6] },
+    { x: 6500, z: 0, offset: [0.6, 0.8, -0.4] },
+    { x: 6500, z: 5000, offset: [-1.1, 0.4, 1.0] },
+
+    { x: -6500, z: -5000, offset: [-1.9, -1.4, -0.7] },
+    { x: -6500, z: 0, offset: [0.4, 0.0, 0.1] },
+    { x: -6500, z: 5000, offset: [2.0, 1.6, -0.9] },
+
+    // …and so on, keep the x/z values the same, tweak offset as needed
   ];
 
   return (
     <section
       id="get-started"
       ref={secRef}
-      className="relative flex h-svh flex-col items-center justify-center gap-12 bg-gradient-to-b from-black from-50% to-purple-900 py-24 lg:bg-none"
+      className="relative flex h-lvh flex-col items-center justify-center gap-12 bg-gradient-to-b from-black from-50% to-purple-900 py-24 lg:bg-none"
     >
       <img src="StreamSync-Logo.svg" alt="" className="w-84" />
 

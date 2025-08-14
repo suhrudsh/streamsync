@@ -31,17 +31,26 @@ export function FloatingLogoTiles({
 
   // Precompute the world positions for each tile
   const instances = useMemo(() => {
+    if (!sectionBounds || sectionBounds.width === 0) return [];
+
     return positionsPct.map((pos, i) => {
       const px = sectionBounds.left + (pos.x / 100) * sectionBounds.width;
       const py = sectionBounds.top + (pos.z / 100) * sectionBounds.height;
+
       const [wx, wz] = toWorld(px, py);
+
+      // read the static offset you added in FinalCTA (world units)
+      const o = pos.offset ?? [0, 0, 0];
+
+      // apply offset: [x, y, z] -> wx + ox, oy, wz + oz
+      // rounding reduces tiny projection jitter
+      const fx = Number((wx + o[0]).toFixed(3));
+      const fy = Number(o[1].toFixed(3));
+      const fz = Number((wz + o[2]).toFixed(3));
+
       return {
         logo: logos[i],
-        position: [
-          wx + (Math.random() - 0.5) * 5,
-          (Math.random() - 0.5) * 10,
-          wz + (Math.random() - 0.5) * 5,
-        ],
+        position: [fx, fy, fz],
       };
     });
   }, [positionsPct, logos, sectionBounds, toWorld]);
