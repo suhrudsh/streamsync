@@ -40,7 +40,7 @@ export function HowItWorks({ logoPaths }) {
       className="relative bg-black pb-24 pl-12 xl:px-24"
     >
       <div className="flex flex-col items-center gap-4 text-center">
-        <h2 className="font-heading text-4xl font-extrabold lg:text-4xl xl:text-6xl">
+        <h2 className="font-heading text-4xl font-extrabold lg:text-4xl xl:text-5xl 2xl:text-6xl">
           Watch anything. From anywhere.
         </h2>
         <p className="max-w-[45ch] text-base text-zinc-300 md:text-xl lg:text-2xl xl:text-3xl">
