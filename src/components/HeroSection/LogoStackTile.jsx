@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useImperativeHandle } from "react";
 import gsap from "gsap";
 import * as THREE from "three";
 import LogoTile from "../../tiles/LogoTile";
@@ -11,6 +11,7 @@ export default function LogoStackTile({
   position,
   rotation,
   animationDirection,
+  ref,
 }) {
   const tileRef = useRef();
 
@@ -23,48 +24,49 @@ export default function LogoStackTile({
 
   const targetOffset = directionMap[animationDirection] || new THREE.Vector3();
 
-  function handleHover(e) {
-    e.stopPropagation();
-    if (!tileRef.current) return;
+  useImperativeHandle(ref, () => ({
+    object: () => tileRef.current,
 
-    const newPos = tileRef.current.position.clone().add(targetOffset);
+    triggerHover() {
+      if (!tileRef.current) return;
+      const newPos = tileRef.current.position.clone().add(targetOffset);
 
-    gsap.to(tileRef.current.position, {
-      ...newPos,
-      duration: 0.2,
-      ease: "power2.out",
-    });
+      gsap.to(tileRef.current.position, {
+        x: newPos.x,
+        y: newPos.y,
+        z: newPos.z,
+        duration: 0.2,
+        ease: "power2.out",
+        onComplete: () => {
+          gsap.to(tileRef.current.position, {
+            x: position[0],
+            y: position[1],
+            z: position[2],
+            duration: 0.2,
+            delay: 1,
+            ease: "power2.out",
+          });
+        },
+      });
 
-    gsap.to(tileRef.current.rotation, {
-      y: Math.PI,
-      duration: 0.2,
-      ease: "power2.out",
-    });
-  }
-
-  function handleUnhover(e) {
-    e.stopPropagation();
-    if (!tileRef.current) return;
-
-    gsap.to(tileRef.current.position, {
-      x: position[0],
-      y: position[1],
-      z: position[2],
-      duration: 0.2,
-      delay: 1,
-      ease: "power2.out",
-    });
-
-    gsap.to(tileRef.current.rotation, {
-      y: rotation[1],
-      duration: 0.2,
-      delay: 1,
-      ease: "power2.out",
-    });
-  }
+      gsap.to(tileRef.current.rotation, {
+        y: Math.PI,
+        duration: 0.2,
+        ease: "power2.out",
+        onComplete: () => {
+          gsap.to(tileRef.current.rotation, {
+            y: rotation[1],
+            duration: 0.2,
+            delay: 1,
+            ease: "power2.out",
+          });
+        },
+      });
+    },
+  }));
 
   return (
-    <group onPointerOver={handleHover} onPointerOut={handleUnhover}>
+    <group>
       <LogoTile
         geometry1={geometry1}
         geometry2={geometry2}

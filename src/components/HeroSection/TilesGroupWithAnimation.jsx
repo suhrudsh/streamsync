@@ -1,8 +1,11 @@
 import { useRef } from "react";
+import * as THREE from "three";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import LogoStackTile from "./LogoStackTile";
+import { TouchTracker } from "../../tiles/TouchTracker";
+import { HoverRaycastManager } from "../../tiles/HoverRaycastManager";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,6 +16,9 @@ export function TilesGroupWithAnimation({
   logoPaths,
 }) {
   const tilesGroupRef = useRef();
+  const pointerRef = useRef(new THREE.Vector2(-10, -10));
+  const movedRef = useRef(false);
+  const tileRefs = useRef([]);
 
   useGSAP(() => {
     if (!tilesGroupRef.current || !scrollTriggerAreaRef.current) return;
@@ -30,9 +36,17 @@ export function TilesGroupWithAnimation({
 
   return (
     <group ref={tilesGroupRef}>
+      <TouchTracker pointerRef={pointerRef} movedRef={movedRef} />
+      <HoverRaycastManager
+        pointerRef={pointerRef}
+        movedRef={movedRef}
+        tileRefs={tileRefs}
+      />
+
       {logoPaths.map((logo, index) => (
         <LogoStackTile
           key={index}
+          ref={(el) => (tileRefs.current[index] = el)}
           logo={logo}
           geometry1={nodes.tile_1.geometry}
           geometry2={nodes.tile_2.geometry}
