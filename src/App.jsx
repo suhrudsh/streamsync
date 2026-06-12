@@ -10,7 +10,6 @@ import { UIPreviewMobile } from "./components/UIPreviewSection/UIPreviewMobile";
 import { HowItWorksMobile } from "./components/HowItWorksSection/HowItWorksMobile";
 import { FinalCTA } from "./components/FinalCTA";
 import { Footer } from "./components/Footer";
-import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 
 gsap.registerPlugin(ScrollTrigger);
