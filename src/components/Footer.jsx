@@ -1,6 +1,9 @@
-export function Footer() {
+export function Footer({ ref }) {
   return (
-    <footer className="sticky bottom-0 -z-20 flex h-[75svh] w-full justify-center overflow-hidden bg-purple-900 px-4 md:px-12 xl:px-24">
+    <footer
+      ref={ref}
+      className="sticky bottom-0 -z-20 flex h-[75svh] w-full justify-center overflow-hidden px-4 md:px-12 xl:px-24"
+    >
       <div className="flex w-full flex-col items-center justify-between">
         <div className="grid w-full gap-8 text-lg text-balance text-zinc-300 md:grid-cols-2 md:text-xl lg:text-2xl 2xl:text-3xl">
           <div className="flex flex-col gap-2 lg:w-fit lg:gap-4">

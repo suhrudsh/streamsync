@@ -10,6 +10,10 @@ import { UIPreviewMobile } from "./components/UIPreviewSection/UIPreviewMobile";
 import { HowItWorksMobile } from "./components/HowItWorksSection/HowItWorksMobile";
 import { FinalCTA } from "./components/FinalCTA";
 import { Footer } from "./components/Footer";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/all";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
@@ -47,6 +51,29 @@ export default function App() {
     return () => gsap.ticker.remove(update);
   }, []);
 
+  const finalCTARef = useRef();
+  const footerRef = useRef();
+
+  function ScrollColorEffect({ finalCTARef, footerRef }) {
+    useEffect(() => {
+      if (!finalCTARef.current) return;
+
+      const handleScroll = () => {
+        const bottom = finalCTARef.current.getBoundingClientRect().bottom;
+        const isPastTrigger = bottom < window.innerHeight;
+        const color = isPastTrigger ? "#59168b" : "#000000";
+        document.body.style.backgroundColor = color;
+        if (footerRef.current) footerRef.current.style.backgroundColor = color;
+      };
+
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      handleScroll();
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, [finalCTARef, footerRef]);
+
+    return null;
+  }
+
   return (
     <>
       <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
@@ -64,8 +91,9 @@ export default function App() {
             <HowItWorks logoPaths={logoPaths} />
           )}
           {isMobile ? <UIPreviewMobile /> : <UIPreview />}
-          <FinalCTA isMobile={isMobile} logos={logoPaths} />
-          <Footer />
+          <FinalCTA ref={finalCTARef} isMobile={isMobile} logos={logoPaths} />
+          <Footer ref={footerRef} />
+          <ScrollColorEffect finalCTARef={finalCTARef} footerRef={footerRef} />
         </TileProvider>
       </div>
     </>
